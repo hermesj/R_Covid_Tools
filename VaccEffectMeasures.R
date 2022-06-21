@@ -29,7 +29,7 @@ levels(vaccinations$LandkreisId_Impfort)
 hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
 
 # Einlesen Kreis IDs
-kreisIDs <- read.table("data/Corona BL - Kreiskennzahlen.tsv", 
+kreisIDs <- read.table("resources/Corona BL - Kreiskennzahlen.tsv", 
                        header = TRUE, sep = "\t")
 kreisIDs$ags <- str_pad(kreisIDs$ags, 5, pad = "0")
 
