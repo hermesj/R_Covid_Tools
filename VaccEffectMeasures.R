@@ -3,7 +3,7 @@ library(lubridate)
 library(dplyr)
 
 # Einlesen Infektionen - Quelle: https://github.com/robert-koch-institut 2022-05-29
-infections <- read.csv("../VaccEffectMeasures/Aktuell_Deutschland_SarsCov2_Infektionen.txt", 
+infections <- read.csv("data/Aktuell_Deutschland_SarsCov2_Infektionen.txt", 
                        header = TRUE)
 infections$IdLandkreis <- str_pad(infections$IdLandkreis, 5, pad = "0")
 infections$IdLandkreis <- factor(infections$IdLandkreis)
@@ -18,7 +18,7 @@ infections$NeuGenesen <- factor(infections$NeuGenesen)
 str(infections)
 
 # Einlesen Impfungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
-vaccinations <- read.csv("../VaccEffectMeasures/Aktuell_Deutschland_Landkreise_COVID-19-Impfungen.txt")
+vaccinations <- read.csv("data/Aktuell_Deutschland_Landkreise_COVID-19-Impfungen.txt")
 vaccinations$Impfdatum <- as.Date(vaccinations$Impfdatum, format = "%Y-%m-%d")
 vaccinations$LandkreisId_Impfort <- factor(vaccinations$LandkreisId_Impfort)
 vaccinations$Altersgruppe <- factor(vaccinations$Altersgruppe)
@@ -26,10 +26,10 @@ vaccinations$Impfschutz <- factor(vaccinations$Impfschutz)
 levels(vaccinations$LandkreisId_Impfort)
 
 # Einlesen Hospitalisierungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
-hospitalizations <- read.csv("../VaccEffectMeasures/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
+hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
 
 # Einlesen Kreis IDs
-kreisIDs <- read.table("../VaccEffectMeasures/Corona BL - Kreiskennzahlen.tsv", 
+kreisIDs <- read.table("data/Corona BL - Kreiskennzahlen.tsv", 
                        header = TRUE, sep = "\t")
 kreisIDs$ags <- str_pad(kreisIDs$ags, 5, pad = "0")
 
