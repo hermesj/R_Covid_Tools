@@ -15,7 +15,7 @@ infections$IstErkrankungsbeginn <- factor(infections$IstErkrankungsbeginn)
 infections$NeuerFall <- factor(infections$NeuerFall)
 infections$NeuerTodesfall <- factor(infections$NeuerTodesfall)
 infections$NeuGenesen <- factor(infections$NeuGenesen)
-str(infections)
+summary(infections)
 
 # Einlesen Impfungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
 vaccinations <- read.csv("data/Aktuell_Deutschland_Landkreise_COVID-19-Impfungen.txt")
@@ -23,7 +23,26 @@ vaccinations$Impfdatum <- as.Date(vaccinations$Impfdatum, format = "%Y-%m-%d")
 vaccinations$LandkreisId_Impfort <- factor(vaccinations$LandkreisId_Impfort)
 vaccinations$Altersgruppe <- factor(vaccinations$Altersgruppe)
 vaccinations$Impfschutz <- factor(vaccinations$Impfschutz)
-levels(vaccinations$LandkreisId_Impfort)
+summary(vaccinations)
+
+# Unterschiede in Zahl der Landkreise --> Berlin?
+# Differenzmenge (müsste es doch eigentlich einfacher geben, hier eine Lösung
+# aus https://www.r-bloggers.com/2017/06/algebra-of-sets-in-r/ )
+relcomp <- function(a, b) {
+  comp <- vector()
+  for (i in a) {
+    if (i %in% a && !(i %in% b)) {
+      comp <- append(comp, i)
+    }
+  }
+  return(comp)
+}
+LK_IDs_Vacc <- levels(vaccinations$LandkreisId_Impfort)
+LK_IDs_Inf <- levels(infections$IdLandkreis)
+print("LKs mit Infektionen, ohne Impfungen: ")
+print(relcomp(LK_IDs_Inf,LK_IDs_Vacc))
+print("LKs mit Impfungen, ohne Infektionen: ")
+print(relcomp(LK_IDs_Vacc, LK_IDs_Inf))
 
 # Einlesen Hospitalisierungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
 hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
