@@ -1,0 +1,405 @@
+Aufstellung von Informationen zu den 400 deutschen Landkreisen aus verschiedenen Quellen			
+Quelle für Kreiskennziffer und Einwohner: https://de.wikipedia.org/wiki/Liste_der_Landkreise_in_Deutschland			
+Quelle für Einwohner und Einkommen pro Kopf (2019): http://www.statistikportal.de/de/vgrdl/ergebnisse-kreisebene/einkommen-kreise			
+			
+Kennzahl	Name	Einwohner	Einkommen
+1001	Flensburg, Stadt	89934	19134
+1002	Kiel, Stadt	246601	19886
+1003	Lübeck, Stadt	215846	21028
+1004	Neumünster, Stadt	79905	19773
+1051	Dithmarschen	133251	23967
+1053	Herzogtum Lauenburg	199152	27538
+1054	Nordfriesland	167147	26595
+1055	Ostholstein	201487	24283
+1056	Pinneberg	317085	25433
+1057	Plön	129353	23998
+1058	Rendsburg-Eckernförde	274765	24471
+1059	Schleswig-Flensburg	202647	23470
+1060	Segeberg	278007	24046
+1061	Steinburg	130706	22837
+1062	Stormarn	244989	26493
+2000	Hamburg	1852478	25808
+3101	Braunschweig, Stadt	248561	23306
+3102	Salzgitter, Stadt	103866	20436
+3103	Wolfsburg, Stadt	123840	25206
+3151	Gifhorn	177227	24467
+3153	Goslar	134688	21944
+3154	Helmstedt	91518	24107
+3155	Northeim	131772	23004
+3157	Peine	135844	22885
+3158	Wolfenbüttel	119361	23390
+3159	Göttingen	323900	21812
+3241	Region Hannover	1155330	22453
+3251	Diepholz	218072	24555
+3252	Hameln-Pyrmont	148580	22864
+3254	Hildesheim	275464	22296
+3255	Holzminden	70207	22023
+3256	Nienburg (Weser)	121645	22214
+3257	Schaumburg	158406	22846
+3351	Celle	179386	21669
+3352	Cuxhaven	198826	23412
+3353	Harburg	256016	26627
+3354	Lüchow-Dannenberg	48503	21720
+3355	Lüneburg	184235	22234
+3356	Osterholz	114640	24014
+3357	Rotenburg (Wümme)	164486	23745
+3358	Heidekreis	140885	22039
+3359	Stade	205357	23961
+3360	Uelzen	92566	22099
+3361	Verden	137574	24552
+3401	Delmenhorst, Stadt	77503	19980
+3402	Emden, Stadt	49874	19693
+3403	Oldenburg, Stadt	169605	20874
+3404	Osnabrück, Stadt	164223	21991
+3405	Wilhelmshaven, Stadt	75189	19050
+3451	Ammerland	125643	23286
+3452	Aurich	190178	21617
+3453	Cloppenburg	172632	22284
+3454	Emsland	328930	22747
+3455	Friesland	98971	22161
+3456	Grafschaft Bentheim	137891	21457
+3457	Leer	171483	20504
+3458	Oldenburg	131467	24332
+3459	Osnabrück	359471	23980
+3460	Vechta	143698	24206
+3461	Wesermarsch	88524	22842
+3462	Wittmund	57384	22353
+4011	Bremen, Stadt	566573	22604
+4012	Bremerhaven, Stadt	113557	18590
+5111	Düsseldorf, Stadt	620523	27199
+5112	Duisburg, Stadt	495885	17741
+5113	Essen, Stadt	582415	21168
+5114	Krefeld, Stadt	226844	22327
+5116	Mönchengladbach, Stadt	259665	21721
+5117	Mülheim an der Ruhr, Stadt	170921	23837
+5119	Oberhausen, Stadt	209566	19364
+5120	Remscheid, Stadt	111516	23402
+5122	Solingen, Stadt	159193	24169
+5124	Wuppertal, Stadt	355004	21858
+5154	Kleve	313586	21583
+5158	Mettmann	484322	26333
+5162	Rhein-Kreis Neuss	452001	26088
+5166	Viersen	298536	24013
+5170	Wesel	460113	23141
+5314	Bonn, Stadt	330579	23831
+5315	Köln, Stadt	1083498	23339
+5316	Leverkusen, Stadt	163905	22683
+5334	Städteregion Aachen	556631	21134
+5358	Düren	265140	22005
+5362	Rhein-Erft-Kreis	469611	23418
+5366	Euskirchen	194359	22750
+5370	Heinsberg	256458	21388
+5374	Oberbergischer Kreis	271699	24173
+5378	Rheinisch-Bergischer Kreis	283275	27254
+5382	Rhein-Sieg-Kreis	600375	24828
+5512	Bottrop, Stadt	117388	21057
+5513	Gelsenkirchen, Stadt	259105	17015
+5515	Münster, Stadt	316403	24005
+5554	Borken	371898	23459
+5558	Coesfeld	220712	25107
+5562	Recklinghausen	613599	21204
+5566	Steinfurt	448197	23410
+5570	Warendorf	277417	24607
+5711	Bielefeld, Stadt	333509	22658
+5754	Gütersloh	364818	25606
+5758	Herford	250547	23724
+5762	Höxter	139729	23136
+5766	Lippe	346970	23432
+5770	Minden-Lübbecke	310270	23696
+5774	Paderborn	308335	22651
+5911	Bochum, Stadt	364454	20743
+5913	Dortmund, Stadt	587696	19855
+5914	Hagen, Stadt	188687	20432
+5915	Hamm, Stadt	178967	19469
+5916	Herne, Stadt	156940	18907
+5954	Ennepe-Ruhr-Kreis	323130	25151
+5958	Hochsauerlandkreis	259030	25497
+5962	Märkischer Kreis	408662	25545
+5966	Olpe	133362	31052
+5970	Siegen-Wittgenstein	275491	24800
+5974	Soest	301016	23676
+5978	Unna	393618	22267
+6411	Darmstadt, Stadt	159174	24164
+6412	Frankfurt am Main, Stadt	764104	23731
+6413	Offenbach am Main, Stadt	130892	19445
+6414	Wiesbaden, Stadt	278609	25645
+6431	Bergstraße	271015	25607
+6432	Darmstadt-Dieburg	297701	25578
+6433	Groß-Gerau	275807	23115
+6434	Hochtaunuskreis	237281	35238
+6435	Main-Kinzig-Kreis	421689	25180
+6436	Main-Taunus-Kreis	239264	29389
+6437	Odenwaldkreis	96754	22901
+6438	Offenbach	356542	25489
+6439	Rheingau-Taunus-Kreis	187433	26775
+6440	Wetteraukreis	310353	25182
+6531	Gießen	271667	21836
+6532	Lahn-Dill-Kreis	253373	24515
+6533	Limburg-Weilburg	172291	23619
+6534	Marburg-Biedenkopf	245903	22152
+6535	Vogelsbergkreis	105506	22673
+6611	Kassel, Stadt  	201048	20255
+6631	Fulda	223023	23779
+6632	Hersfeld-Rotenburg	120304	22748
+6633	Kassel, Landkreis	237007	23613
+6634	Schwalm-Eder-Kreis	179840	22900
+6635	Waldeck-Frankenberg	156528	23524
+6636	Werra-Meißner-Kreis	100046	21365
+7111	Koblenz, Stadt	113388	22095
+7131	Ahrweiler	130479	24342
+7132	Altenkirchen (Westerwald)	129087	22724
+7133	Bad Kreuznach	158746	22783
+7134	Birkenfeld	80830	22382
+7135	Cochem-Zell	61578	23499
+7137	Mayen-Koblenz	214786	23144
+7138	Neuwied	183131	23963
+7140	Rhein-Hunsrück-Kreis	103401	24321
+7141	Rhein-Lahn-Kreis	122574	22834
+7143	Westerwaldkreis	202830	25067
+7211	Trier, Stadt	110674	21794
+7231	Bernkastel-Wittlich	112685	23121
+7232	Eifelkreis Bitburg-Prüm	100055	22916
+7233	Vulkaneifel	60491	22697
+7235	Trier-Saarburg	150533	24333
+7311	Frankenthal (Pfalz), Stadt	48750	22324
+7312	Kaiserslautern, Stadt	99662	19639
+7313	Landau in der Pfalz, Stadt	46685	22413
+7314	Ludwigshafen am Rhein, Stadt	172557	20074
+7315	Mainz, Stadt	217123	22874
+7316	Neustadt an der Weinstraße, Stadt	53306	26431
+7317	Pirmasens, Stadt	40176	20337
+7318	Speyer, Stadt	50741	25203
+7319	Worms, Stadt	83459	21336
+7320	Zweibrücken, Stadt	34001	21273
+7331	Alzey-Worms	130715	23648
+7332	Bad Dürkheim	133004	27144
+7333	Donnersbergkreis	75539	22493
+7334	Germersheim	129006	23739
+7335	Kaiserslautern	106320	22179
+7336	Kusel	70105	21716
+7337	Südliche Weinstraße	110783	24911
+7338	Rhein-Pfalz-Kreis	154754	27081
+7339	Mainz-Bingen	211525	25989
+7340	Südwestpfalz	94912	23984
+8111	Stuttgart, Stadt	630305	26806
+8115	Böblingen	392898	26468
+8116	Esslingen	533617	26660
+8117	Göppingen	258781	24994
+8118	Ludwigsburg	544971	27064
+8119	Rems-Murr-Kreis	427286	26208
+8121	Heilbronn, Stadt	126458	42275
+8125	Heilbronn	346363	25935
+8126	Hohenlohekreis	112765	25785
+8127	Schwäbisch Hall	197860	24615
+8128	Main-Tauber-Kreis	132684	24121
+8135	Heidenheim	132812	23785
+8136	Ostalbkreis	314294	25318
+8211	Baden-Baden, Stadt	55449	29731
+8212	Karlsruhe, Stadt	308436	23189
+8215	Karlsruhe	446852	25221
+8216	Rastatt	232091	24613
+8221	Heidelberg, Stadt	158741	24305
+8222	Mannheim, Stadt	309721	22500
+8225	Neckar-Odenwald-Kreis	143797	23357
+8226	Rhein-Neckar-Kreis	548233	25860
+8231	Pforzheim, Stadt	126016	23263
+8235	Calw	160149	24759
+8236	Enzkreis	199752	26978
+8237	Freudenstadt	118364	25660
+8311	Freiburg im Breisgau, Stadt	230940	22809
+8315	Breisgau-Hochschwarzwald	264867	25735
+8316	Emmendingen	166862	24405
+8317	Ortenaukreis	432580	24360
+8325	Rottweil	140166	26165
+8326	Schwarzwald-Baar-Kreis	212872	25758
+8327	Tuttlingen	141682	26965
+8335	Konstanz	286876	26021
+8336	Lörrach	228842	28091
+8337	Waldshut	171237	25920
+8415	Reutlingen	287497	25703
+8416	Tübingen	228471	24396
+8417	Zollernalbkreis	189862	26337
+8421	Ulm, Stadt	126405	28976
+8425	Alb-Donau-Kreis	198204	24679
+8426	Biberach	202250	25221
+8435	Bodenseekreis	217901	27300
+8436	Ravensburg	285888	25068
+8437	Sigmaringen	130946	23874
+9161	Ingolstadt, Stadt	136952	24732
+9162	München, Stadt	1488202	32039
+9163	Rosenheim, Stadt	63591	23858
+9171	Altötting	111654	24399
+9172	Berchtesgadener Land	106327	24200
+9173	Bad Tölz-Wolfratshausen	128212	27587
+9174	Dachau	155117	26825
+9175	Ebersberg	144091	28878
+9176	Eichstätt	133169	25403
+9177	Erding	138891	26544
+9178	Freising	180313	25426
+9179	Fürstenfeldbruck	218740	27292
+9180	Garmisch-Partenkirchen	88279	26479
+9181	Landsberg am Lech	121019	27421
+9182	Miesbach	100183	35599
+9183	Mühldorf am Inn	116483	24823
+9184	München	349685	32348
+9185	Neuburg-Schrobenhausen	97730	25109
+9186	Pfaffenhofen an der Ilm	129128	27159
+9187	Rosenheim	261721	26661
+9188	Starnberg	136610	38509
+9189	Traunstein	177485	26000
+9190	Weilheim-Schongau	136134	26734
+9261	Landshut, Stadt	73065	25882
+9262	Passau, Stadt	52415	22145
+9263	Straubing, Stadt	47612	25067
+9271	Deggendorf	119479	24783
+9272	Freyung-Grafenau	78355	22650
+9273	Kelheim	123390	24601
+9274	Landshut	161191	25320
+9275	Passau	193454	23354
+9276	Regen	77313	22603
+9277	Rottal-Inn	121800	24431
+9278	Straubing-Bogen	101745	24709
+9279	Dingolfing-Landau	97244	25558
+9361	Amberg, Stadt	42052	23452
+9362	Regensburg, Stadt	152270	23584
+9363	Weiden in der Oberpfalz, Stadt	42535	22909
+9371	Amberg-Sulzbach	102998	24090
+9372	Cham	128094	23516
+9373	Neumarkt in der Oberpfalz	135225	25480
+9374	Neustadt an der Waldnaab	94645	23136
+9375	Regensburg	194275	25420
+9376	Schwandorf	148477	23091
+9377	Tirschenreuth	71696	23630
+9461	Bamberg, Stadt	76674	22943
+9462	Bayreuth, Stadt	74048	21821
+9463	Coburg, Stadt	40842	25860
+9464	Hof, Stadt	45173	21052
+9471	Bamberg	147497	24026
+9472	Bayreuth	103679	23702
+9473	Coburg	86571	26719
+9474	Forchheim	116600	25526
+9475	Hof	94522	23234
+9476	Kronach	66355	24063
+9477	Kulmbach	71428	24694
+9478	Lichtenfels	66722	24246
+9479	Wunsiedel im Fichtelgebirge	71974	23775
+9561	Ansbach, Stadt	41681	22522
+9562	Erlangen, Stadt	112385	25815
+9563	Fürth, Stadt	128223	24847
+9564	Nürnberg, Stadt	515543	23429
+9565	Schwabach, Stadt	41056	27401
+9571	Ansbach	185316	25044
+9572	Erlangen-Höchstadt	138105	27361
+9573	Fürth	118695	26771
+9574	Nürnberger Land	171143	26945
+9575	Neustadt an der Aisch-Bad Windsheim	101272	24298
+9576	Roth	127168	25910
+9577	Weißenburg-Gunzenhausen	95117	23988
+9661	Aschaffenburg, Stadt	174658	25733
+9662	Schweinfurt, Stadt	53319	21838
+9663	Würzburg, Stadt	126954	26159
+9671	Aschaffenburg	70858	25957
+9672	Bad Kissingen	103169	24022
+9673	Rhön-Grabfeld	79510	24041
+9674	Haßberge	84275	23333
+9675	Kitzingen	91696	24751
+9676	Miltenberg	128743	24543
+9677	Main-Spessart	125976	24957
+9678	Schweinfurt	115652	24280
+9679	Würzburg	162697	25039
+9761	Augsburg, Stadt	295830	21123
+9762	Kaufbeuren, Stadt	44662	24041
+9763	Kempten (Allgäu), Stadt	68940	23231
+9764	Memmingen, Stadt	44360	28812
+9771	Aichach-Friedberg	135024	27388
+9772	Augsburg	255900	26576
+9773	Dillingen an der Donau	97172	25638
+9774	Günzburg	127342	25328
+9775	Neu-Ulm	175823	25494
+9776	Lindau (Bodensee)	82085	27411
+9777	Ostallgäu	141907	25252
+9778	Unterallgäu	146164	26095
+9779	Donau-Ries	134324	25963
+9780	Oberallgäu	156308	26031
+10041	Saarbrücken, Regionalverband	327502	20436
+10042	Merzig-Wadern	103471	19988
+10043	Neunkirchen	131172	21216
+10044	Saarlouis	193732	22027
+10045	Saarpfalz-Kreis	141656	24357
+10046	St. Wendel	86458	22957
+11000	Berlin, Stadt	3664088	21327
+12051	Brandenburg an der Havel, Stadt	72040	19504
+12052	Cottbus, Stadt und Landkreis Spree-Neiße	98693	20157
+12053	Frankfurt (Oder), Stadt	57015	19118
+12054	Potsdam, Stadt	182112	22430
+12060	Barnim	187343	21714
+12061	Dahme-Spreewald	173316	22345
+12062	Elbe-Elster	101085	20214
+12063	Havelland	164693	21678
+12064	Märkisch-Oderland	197195	21753
+12065	Oberhavel	214234	22339
+12066	Oberspreewald-Lausitz	108396	20790
+12067	Oder-Spree	179276	21690
+12068	Ostprignitz-Ruppin	98808	20352
+12069	Potsdam-Mittelmark	217954	24127
+12070	Prignitz	76096	20497
+12071	Spree-Neiße	113011	21472
+12072	Teltow-Fläming	171554	21399
+12073	Uckermark	118250	19621
+13003	Rostock, Stadt	209061	19759
+13004	Schwerin, Stadt	95609	20537
+13071	Mecklenburgische Seenplatte	258057	20554
+13072	Rostock	217072	21597
+13073	Vorpommern-Rügen	225383	20696
+13074	Nordwestmecklenburg	157975	21035
+13075	Vorpommern-Greifswald	235773	19601
+13076	Ludwigslust-Parchim	211844	21730
+14511	Chemnitz, Stadt	244401	20954
+14521	Erzgebirgskreis	331917	21359
+14522	Mittelsachsen	301474	21428
+14523	Vogtlandkreis	223905	21275
+14524	Zwickau	312033	21822
+14612	Dresden, Stadt	556227	20800
+14625	Bautzen	298010	21558
+14626	Görlitz	250558	20200
+14627	Meißen	240371	22207
+14628	Sächsische Schweiz-Osterzgebirge	244722	21753
+14713	Leipzig, Stadt	597493	19574
+14729	Leipzig	258386	22603
+14730	Nordsachsen	197444	21383
+15001	Dessau-Roßlau, Stadt	79354	20851
+15002	Halle (Saale), Stadt	237865	18527
+15003	Magdeburg, Stadt	235775	19692
+15081	Altmarkkreis Salzwedel	82687	21136
+15082	Anhalt-Bitterfeld	157217	20729
+15083	Börde	170567	21830
+15084	Burgenlandkreis	177590	20604
+15085	Harz	210975	20889
+15086	Jerichower Land	89403	21568
+15087	Mansfeld-Südharz	133690	20041
+15088	Saalekreis	183434	21677
+15089	Salzlandkreis	187457	20133
+15090	Stendal	110485	19988
+15091	Wittenberg	124185	21309
+16051	Erfurt, Stadt	213692	20047
+16052	Gera, Stadt	92126	20411
+16053	Jena, Stadt	110731	19918
+16054	Suhl, Stadt	36395	23048
+16055	Weimar, Stadt	65098	19745
+16061	Eichsfeld	99463	20992
+16062	Nordhausen	82456	19811
+16063	Wartburgkreis	159937	20978
+16064	Unstrut-Hainich-Kreis	101698	19916
+16065	Kyffhäuserkreis	73522	19543
+16066	Schmalkalden-Meiningen	124241	21705
+16067	Gotha	134563	20366
+16068	Sömmerda	69107	20384
+16069	Hildburghausen	62656	21424
+16070	Ilm-Kreis	105606	20112
+16071	Weimarer Land	82291	20722
+16072	Sonneberg	57044	21785
+16073	Saalfeld-Rudolstadt	102139	20878
+16074	Saale-Holzland-Kreis	82816	21083
+16075	Saale-Orla-Kreis	79632	20789
+16076	Greiz	96668	21373
+16077	Altenburger Land	88356	20707

@@ -25,6 +25,16 @@ vaccinations$Altersgruppe <- factor(vaccinations$Altersgruppe)
 vaccinations$Impfschutz <- factor(vaccinations$Impfschutz)
 summary(vaccinations)
 
+# Einlesen Hospitalisierungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
+# Leider keine Kreis-, sondern nur Bundesländerdaten
+hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
+
+# Einlesen Kreis IDs
+kreisInfos <- read.table("resources/LKs_Infos_merged.csv", 
+                       header = TRUE, sep = "\t", skip = 4)
+kreisInfos$Kennzahl <- str_pad(kreisInfos$Kennzahl, 5, pad = "0")
+summary(kreisInfos)
+
 # Unterschiede in Zahl der Landkreise --> Berlin?
 # Differenzmenge (müsste es doch eigentlich einfacher geben, hier eine Lösung
 # aus https://www.r-bloggers.com/2017/06/algebra-of-sets-in-r/ )
@@ -43,21 +53,33 @@ print("LKs mit Infektionen, ohne Impfungen: ")
 print(relcomp(LK_IDs_Inf,LK_IDs_Vacc))
 print("LKs mit Impfungen, ohne Infektionen: ")
 print(relcomp(LK_IDs_Vacc, LK_IDs_Inf))
+# kreisIDs$name[which(kreisIDs$ags=="16057")]
+# kreisIDs$name[which(kreisIDs$ags=="11000")]
+# kreisIDs$ags[which(kreisIDs$name=="Wartburgkreis")]
 
-# Einlesen Hospitalisierungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
-hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
 
-# Einlesen Kreis IDs
-kreisIDs <- read.table("resources/Corona BL - Kreiskennzahlen.tsv", 
-                       header = TRUE, sep = "\t")
-kreisIDs$ags <- str_pad(kreisIDs$ags, 5, pad = "0")
+#Behandlung Berlin: Rückführung Bezirke auf Kreisebene in Infektionstabelle
+infections$IdLandkreis <- gsub(pattern="^110..", replacement="11000", x=infections$IdLandkreis)
+infections$IdLandkreis <- factor(infections$IdLandkreis)
+
+#Behandlung Eisenach: Aufnahme in LK Wartburgkreis bei Impfungen
+vaccinations$LandkreisId_Impfort <- gsub(pattern="^16056", replacement="16063", x=vaccinations$LandkreisId_Impfort) 
+vaccinations$LandkreisId_Impfort <- factor(vaccinations$LandkreisId_Impfort)
+
+
+# Check, o zu allen Landkreisen mit Impfung / Infektion auch LK-Daten vorliegen
+LK_IDs_Inf <- levels(infections$IdLandkreis)
+print(relcomp(LK_IDs_Inf,kreisInfos$Kennzahl))
+print(relcomp(kreisInfos$Kennzahl, LK_IDs_Inf))
+length(kreisInfos$Kennzahl)
+length(LK_IDs_Inf)
 
 #tapply(X=infections$AnzahlTodesfall, INDEX=infections$Refdatum, FUN=sum)
 #tapply(X=infections$AnzahlTodesfall, INDEX=infections$IdLandkreis, FUN=sum)
 
-# Infektionen gruppieren nach Wochen und Monaten
-infections$month <- floor_date(infections$Refdatum, "month")
+# Infektionen gruppieren nach Wochen
 infections$week <- floor_date(infections$Refdatum, "week")
+vaccinations$week <- floor_date(vaccinations$Impfdatum, "week")
 
 # Infektionen pro Woche addieren (alle Kreise)
 infPerWeek = data.frame(tapply(X=infections$AnzahlFall/837.56, INDEX=infections$week, FUN=sum));
@@ -72,11 +94,36 @@ datesListD <- dates(deathsPerWeek)
 deathsPerWeek$Date = as.Date(datesListD)
 deathsPerWeek$Value = deathsPerWeek$tapply.X...infections.AnzahlTodesfall..INDEX...infections.week../7;
 
+# Impfungen pro Woche addieren (alle Kreise)
+vaccsPerWeek = data.frame(tapply(X=vaccinations$Anzahl, INDEX=vaccinations$week, FUN=sum));
+datesListV <- dates(vaccsPerWeek)
+vaccsPerWeek$Date = as.Date(datesListV)
+vaccsPerWeek$Value = vaccsPerWeek$tapply.X...vaccinations.Anzahl..INDEX...vaccinations.week..FUN...sum.
+
+#Impfungen pro LK addieren
+vaccsPerLK = data.frame(tapply(X=vaccinations$Anzahl, INDEX=vaccinations$LandkreisId_Impfort, FUN=sum));
+names(vaccsPerLK)[1] <- "Count"
+LKListV <- dates(vaccsPerLK)
+vaccsPerLK$LK = LKListV
+vaccsPerLK = merge(vaccsPerLK, kreisInfos, by.x="LK", by.y="Kennzahl", all=TRUE)
+vaccsPerLK$Incidence <- vaccsPerLK$Einwohner / vaccsPerLK$Count * 100000;
+
+# Plottet ganzen Zeitraum - Impfungen
+plot(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
+     col="darkgreen" ,main ="Impfungen Deutschland")
+
+# Barplot zu Impfinzidenzen auf LK-Ebene
+barplot(Incidence ~ LK, data = vaccsPerLK)
+
+# TODO: Ausreißer einsammeln -> Kreisübergreifende Impfungen?
+
 #Plottet ganzen Zeitraum 
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red" ,main ="Pandemieverlauf Deutschland Januar 2020 - Mai 2022")
 lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
       bg="black", type="b")
+lines(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value/10000, ylab="", xlab="", pch=8, type="b", 
+      col="darkgreen" )
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
 
