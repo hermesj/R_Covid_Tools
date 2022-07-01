@@ -86,9 +86,9 @@ datesList <- dates(infPerWeek)
 infPerWeek$Date = as.Date(datesList)
 infPerWeek$Value = infPerWeek$tapply.X...infections.AnzahlFall.837.56..INDEX...infections.week..;
 
-# Todesfälle pro Woche addieren (alle Kreise)
-deathsPerWeek = data.frame(tapply(X=infections$AnzahlTodesfall, INDEX=infections$week, FUN=sum));
-names(deathsPerWeek)[1] = "Value"
+# Tägliche Todesfälle pro Woche ermitteln (alle Kreise)
+deathsPerWeek = data.frame(tapply(X=infections$AnzahlTodesfall/7, INDEX=infections$week, FUN=sum));
+names(deathsPerWeek)[1] = "DailyDeaths"
 datesListD <- dates(deathsPerWeek)
 deathsPerWeek$Date = as.Date(datesListD)
 #deathsPerWeek$Value = deathsPerWeek$tapply.X...infections.AnzahlTodesfall..INDEX...infections.week../7;
@@ -133,14 +133,55 @@ barplot(DeathIncidence ~ LK, data = deathsPerLK)
 plot(x=deathsPerLK$VaccIncidence, y = deathsPerLK$DeathIncidence, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
 abline(lm(deathsPerLK$DeathIncidence~deathsPerLK$VaccIncidence)$coef, col ="red")
 
-# TODO: Ausreißer einsammeln -> Kreisübergreifende Impfungen?
+# Zusammenfassung von Regionen (Erste DREI Ziffern der Kreis-ID gleich)
+deathsPerLK$Region <- as.factor(substr(deathsPerLK$LK, start=1, stop=3))
+
+perRegion <- data.frame(tapply(X=deathsPerLK$Einwohner, INDEX=deathsPerLK$Region, FUN=function(x) sum(x)))
+names(perRegion)[1] <- "Einwohner"
+perRegion$regionID <- as.factor(dates(perRegion))
+
+perRegion$Vaccs <- tapply(X=deathsPerLK$Count, INDEX=deathsPerLK$Region, FUN=function(x) sum(x))
+names(perRegion)[3] <- "Impfungen"
+
+perRegion$Vaccs <- tapply(X=deathsPerLK$DeathCount, INDEX=deathsPerLK$Region, FUN=function(x) sum(x))
+names(perRegion)[4] <- "Todesfälle"
+
+perRegion$ImpfInzidenz <-  perRegion$Impfungen /perRegion$Einwohner;
+perRegion$TFInzidenz <-  perRegion$Todesfälle /perRegion$Einwohner * 100000;
+
+#Korrelation zwischen Impfungen und Todesfällen (gesamte Pandemie) auf Region-Ebene
+plot(x=perRegion$ImpfInzidenz, y = perRegion$TFInzidenz, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
+abline(lm(perRegion$TFInzidenz~perRegion$ImpfInzidenz)$coef, col ="red")
+
+# Zusammenfassung von Bundesländern (Erste ZWEI Ziffern der Kreis-ID gleich)
+deathsPerLK$BL <- as.factor(substr(deathsPerLK$LK, start=1, stop=2))
+
+perBL <- data.frame(tapply(X=deathsPerLK$Einwohner, INDEX=deathsPerLK$BL, FUN=function(x) sum(x)))
+names(perBL)[1] <- "Einwohner"
+perBL$BL_ID <- as.factor(dates(perBL))
+
+perBL$Vaccs <- tapply(X=deathsPerLK$Count, INDEX=deathsPerLK$BL, FUN=function(x) sum(x))
+names(perBL)[3] <- "Impfungen"
+
+perBL$Vaccs <- tapply(X=deathsPerLK$DeathCount, INDEX=deathsPerLK$BL, FUN=function(x) sum(x))
+names(perBL)[4] <- "Todesfälle"
+
+perBL$ImpfInzidenz <-  perBL$Impfungen /perBL$Einwohner;
+perBL$TFInzidenz <-  perBL$Todesfälle /perBL$Einwohner * 100000;
+
+#Korrelation zwischen Impfungen und Todesfällen (gesamte Pandemie) auf Bundesländer-Ebene
+plot(x=perBL$ImpfInzidenz, y = perBL$TFInzidenz, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
+abline(lm(perBL$TFInzidenz~perBL$ImpfInzidenz)$coef, col ="red")
+
 
 # TODO: Verschiedene Zeitfenster modellieren
 
-#Plottet gesamten Zeitraum 
+
+# Plots für "Gefangene der Gegenwart" 
+# Plottet gesamten Zeitraum 
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red" ,main ="Pandemieverlauf Deutschland Januar 2020 - Mai 2022")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
+lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 lines(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value/10000, ylab="", xlab="", pch=8, type="b", 
       col="darkgreen" )
@@ -151,7 +192,7 @@ legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche")
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red", xlim=as.Date(c("2020-02-01","2020-05-06")), ylim=c(0,300), 
      main ="Pandemieverlauf Deutschland Januar - Mai 2020")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
+lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
@@ -160,7 +201,7 @@ legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche")
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red", xlim=as.Date(c("2020-05-07","2020-10-19")), ylim=c(0,250),
      main ="Pandemieverlauf Deutschland Mai - Oktober 2020")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
+  lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
@@ -169,7 +210,7 @@ legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche")
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red", xlim=as.Date(c("2020-10-20","2021-05-21")), ylim=c(0,1000),
      main ="Pandemieverlauf Deutschland Oktober 2020 - Mai 2021")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
+lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 legend("topright",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
@@ -178,7 +219,7 @@ legend("topright",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red", xlim=as.Date(c("2021-05-22","2021-11-11")), ylim=c(0,500),
      main ="Pandemieverlauf Deutschland Mai - November 2021")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3,
+lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3,
       bg="black", type="b")
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
@@ -187,7 +228,7 @@ legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche")
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
      col="red", xlim=as.Date(c("2021-11-12","2022-05-25")), ylim=c(0,2000),
      main ="Pandemieverlauf Deutschland November 2021 - Mai 2022")
-lines(x=deathsPerWeek$Date, y=deathsPerWeek$Value, ylab="", xlab="", pch=3, 
+lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
