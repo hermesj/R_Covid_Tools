@@ -29,8 +29,8 @@ plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b",
      col="red" ,main ="Pandemieverlauf Deutschland Januar 2020 - Mai 2022")
 lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
-lines(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value/10000, ylab="", xlab="", pch=8, type="b", 
-      col="darkgreen" )
+# lines(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value/10000, ylab="", xlab="", pch=8, type="b", 
+#       col="darkgreen" )
 legend("topleft",legend=c("Wocheninzidenz","Tägliche Todesfälle in der Woche"), 
        col=c("red","black"), pch=c(8,3),lty=c(1,2), ncol=1)
 

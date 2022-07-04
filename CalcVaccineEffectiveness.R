@@ -17,13 +17,18 @@ deathsPerLK = merge(deathsPerLK, vaccsPerLK)
 deathsPerLK$DeathIncidence <- deathsPerLK$DeathCount / deathsPerLK$Einwohner * 100000
 
 # Barplot zu Impfungen pro EW auf LK-Ebene
-barplot(VaccIncidence ~ LK, data = vaccsPerLK)
+barplot(VaccIncidence ~ LK, data = vaccsPerLK, main = "Kumulierte Impfungen pro Einwohner pro Landkreis")
 
 # Barplot zu Todesfällen pro 100k EW auf LK-Ebene
-barplot(DeathIncidence ~ LK, data = deathsPerLK)
+barplot(DeathIncidence ~ LK, data = deathsPerLK, main ="Kumulierte Todesfälle pro 100k Einwohner pro Landkreis")
+
+pearson_cor_LK <- cor(deathsPerLK$VaccIncidence, deathsPerLK$DeathIncidence)
 
 #Korrelation zwischen Impfungen und Todesfällen (gesamte Pandemie) auf LK-Ebene
-plot(x=deathsPerLK$VaccIncidence, y = deathsPerLK$DeathIncidence, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
+plot(x=deathsPerLK$VaccIncidence, y = deathsPerLK$DeathIncidence, 
+     ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner", 
+     main = "Korrelation Impfungen-Todesfälle", 
+     sub = "Auflösung: Landkreise (alle Stellen der Kreiskennzahl)")
 abline(lm(deathsPerLK$DeathIncidence~deathsPerLK$VaccIncidence)$coef, col ="red")
 
 # Zusammenfassung von Regionen (Erste DREI Ziffern der Kreis-ID gleich)
@@ -42,8 +47,13 @@ names(perRegion)[4] <- "Todesfälle"
 perRegion$ImpfInzidenz <-  perRegion$Impfungen /perRegion$Einwohner;
 perRegion$TFInzidenz <-  perRegion$Todesfälle /perRegion$Einwohner * 100000;
 
+pearson_cor_Region <- cor(perRegion$ImpfInzidenz, perRegion$TFInzidenz)
+
 #Korrelation zwischen Impfungen und Todesfällen (gesamte Pandemie) auf Region-Ebene
-plot(x=perRegion$ImpfInzidenz, y = perRegion$TFInzidenz, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
+plot(x=perRegion$ImpfInzidenz, y = perRegion$TFInzidenz, ylab="Todesfälle pro 100k", 
+     xlab="Impfungen pro Einwohner", main = "Korrelation Impfungen-Todesfälle", 
+     sub = "Auflösung: Regionen (drei führende Stellen der Kreiskennzahl)")
+text(x=perRegion$ImpfInzidenz, y = perRegion$TFInzidenz, labels = perRegion$regionID, pos = 4)
 abline(lm(perRegion$TFInzidenz~perRegion$ImpfInzidenz)$coef, col ="red")
 
 # Zusammenfassung von Bundesländern (Erste ZWEI Ziffern der Kreis-ID gleich)
@@ -62,9 +72,15 @@ names(perBL)[4] <- "Todesfälle"
 perBL$ImpfInzidenz <-  perBL$Impfungen /perBL$Einwohner;
 perBL$TFInzidenz <-  perBL$Todesfälle /perBL$Einwohner * 100000;
 
+pearson_cor_BL <- cor(perBL$ImpfInzidenz, perBL$TFInzidenz)
+
 #Korrelation zwischen Impfungen und Todesfällen (gesamte Pandemie) auf Bundesländer-Ebene
-plot(x=perBL$ImpfInzidenz, y = perBL$TFInzidenz, ylab="Todesfälle pro 100k", xlab="Impfungen pro Einwohner")
+plot(x=perBL$ImpfInzidenz, y = perBL$TFInzidenz, ylab="Todesfälle pro 100k", 
+     xlab="Impfungen pro Einwohner", main = "Korrelation Impfungen-Todesfälle", 
+     sub = "Auflösung: Bundesländer (zwei führende Stellen der Kreiskennzahl)")
+text(x=perBL$ImpfInzidenz, y = perBL$TFInziden, labels = perBL$BL_ID, pos = 4)
 abline(lm(perBL$TFInzidenz~perBL$ImpfInzidenz)$coef, col ="red")
+
 
 
 # TODO: Verschiedene Zeitfenster modellieren
