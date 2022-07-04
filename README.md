@@ -8,4 +8,6 @@ This will be a collection of R scripts that can read in and plot the official Co
 and put them all together in a folder with the name "data" within your working directory.
 
 The repository belongs to my course "Data Analysis with R" https://lehre.idh.uni-koeln.de/lehrveranstaltungen/sosem22/public-humanities-tools-1/ at https://github.com/DH-Cologne.
-![Bildschirmfoto 2022-06-30 um 22 29 45](https://user-images.githubusercontent.com/943907/176778716-7979620c-02f1-4849-9af9-bf40a83b48bc.png)
+
+![Correlation_Federal_States](https://user-images.githubusercontent.com/943907/177182234-cb5e58b3-1a75-4d3a-9070-0eb3432efaa1.png)
+![Pandemic_Plot](https://user-images.githubusercontent.com/943907/177182247-97299462-e48a-42a1-8b92-151c41159d44.png)
