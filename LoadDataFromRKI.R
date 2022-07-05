@@ -28,6 +28,12 @@ summary(vaccinations)
 # Einlesen Hospitalisierungen - Quelle: https://github.com/robert-koch-institut 2022-05-29
 # Leider keine Kreis-, sondern nur Bundesländerdaten
 hospitalizations <- read.csv("data/Aktuell_Deutschland_COVID-19-Hospitalisierungen.txt")
+hospitalizations$Datum <- as.Date(hospitalizations$Datum, format = "%Y-%m-%d")
+hospitalizations$Bundesland <- factor(hospitalizations$Bundesland)
+hospitalizations$Bundesland_Id <- str_pad(hospitalizations$Bundesland_Id, 2, pad = "0")
+hospitalizations$Bundesland_Id <- factor(hospitalizations$Bundesland_Id)
+hospitalizations$Altersgruppe <- factor(hospitalizations$Altersgruppe)
+
 
 # Einlesen Kreis IDs
 kreisInfos <- read.table("resources/LKs_Infos_merged.csv", 

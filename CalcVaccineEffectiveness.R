@@ -16,6 +16,11 @@ deathsPerLK$LK = as.factor(datesListLK)
 deathsPerLK = merge(deathsPerLK, vaccsPerLK)
 deathsPerLK$DeathIncidence <- deathsPerLK$DeathCount / deathsPerLK$Einwohner * 100000
 
+# Hospitalisierungen per BL addieren
+hospPerBL = data.frame(tapply(X=hospitalizations$X7T_Hospitalisierung_Faelle, INDEX = hospitalizations$Bundesland_Id, FUN=sum))
+names(hospPerBL)[1]="HospCount"
+hospPerBL$BL_ID <- as.factor(dates(hospPerBL))
+
 # Barplot zu Impfungen pro EW auf LK-Ebene
 barplot(VaccIncidence ~ LK, data = vaccsPerLK, main = "Kumulierte Impfungen pro Einwohner pro Landkreis")
 
@@ -81,7 +86,17 @@ plot(x=perBL$ImpfInzidenz, y = perBL$TFInzidenz, ylab="Todesfälle pro 100k",
 text(x=perBL$ImpfInzidenz, y = perBL$TFInziden, labels = perBL$BL_ID, pos = 4)
 abline(lm(perBL$TFInzidenz~perBL$ImpfInzidenz)$coef, col ="red")
 
+# Korrelation zwischen Impfungen und Hospitalisierungen
+perBL = merge(perBL,hospPerBL)
+perBL$HospInzidenz <- perBL$HospCount/perBL$Einwohner*100000
 
+plot(x=perBL$ImpfInzidenz, y = perBL$HospInzidenz, ylab="Hospitalisierungen pro 100k", 
+     xlab="Impfungen pro Einwohner", main = "Korrelation Impfungen-Hospitalisierungen", 
+     sub = "Auflösung: Bundesländer (zwei führende Stellen der Kreiskennzahl)")
+text(x=perBL$ImpfInzidenz, y = perBL$HospInziden, labels = perBL$BL_ID, pos = 4)
+abline(lm(perBL$HospInzidenz~perBL$ImpfInzidenz)$coef, col ="red")
+
+pearson_cor_BL_hosp <- cor(perBL$ImpfInzidenz, perBL$HospInzidenz)
 
 # TODO: Verschiedene Zeitfenster modellieren
 
