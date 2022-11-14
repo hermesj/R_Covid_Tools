@@ -79,3 +79,4 @@ length(kreisInfos$Kennzahl)
 length(LK_IDs_Inf)
 
 dates <- function(x) dimnames(x)[[1]]
+

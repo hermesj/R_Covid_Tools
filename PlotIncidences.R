@@ -26,7 +26,7 @@ vaccsPerWeek$Value = vaccsPerWeek$tapply.X...vaccinations.Anzahl..INDEX...vaccin
 # Plots für "Gefangene der Gegenwart" 
 # Plottet gesamten Zeitraum 
 plot(x=infPerWeek$Date, y=infPerWeek$Value, ylab="", xlab="", pch=8, type="b", 
-     col="red" ,main ="Pandemieverlauf Deutschland Januar 2020 - Mai 2022")
+     col="red" ,main ="Pandemieverlauf Deutschland Januar 2020 - Aktuell")
 lines(x=deathsPerWeek$Date, y=deathsPerWeek$DailyDeaths, ylab="", xlab="", pch=3, 
       bg="black", type="b")
 # lines(x=vaccsPerWeek$Date, y=vaccsPerWeek$Value/10000, ylab="", xlab="", pch=8, type="b", 
