@@ -1,6 +1,6 @@
 # R_Covid19_Tools
 
-This will be a collection of R scripts that can read in and plot the official Covid-19 numbers from the RKI (https://github.com/robert-koch-institut). The aim is also to uncover correlations between vaccinations and infections / hospitalisations / deaths (work in progress). To use the code, you have to download
+This is a collection of R scripts that can read in and plot the official Covid-19 numbers from the RKI (https://github.com/robert-koch-institut). The aim is also to uncover correlations between vaccinations and infections / hospitalisations / deaths (work in progress). To use the code, you have to download
 - vaccinations https://github.com/robert-koch-institut/COVID-19-Impfungen_in_Deutschland
 - infections https://github.com/robert-koch-institut/SARS-CoV-2-Infektionen_in_Deutschland
 - hospitalizations https://github.com/robert-koch-institut/COVID-19-Hospitalisierungen_in_Deutschland
